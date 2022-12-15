@@ -29,9 +29,13 @@ class Profile(models.Model):
         WST = 'WST', 'Western'
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    favourite_genre = models.CharField(choices=Genre.choices, max_length=50)
-    favourite_director = models.CharField(max_length=50)
-    age = models.IntegerField()
+    favourite_genre = models.CharField(
+        choices=Genre.choices, max_length=50, blank=True, default=''
+        )
+    favourite_director = models.CharField(
+        max_length=50, blank=True, default=''
+        )
+    age = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return f"Profile of {self.user}"
