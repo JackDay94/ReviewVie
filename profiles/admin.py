@@ -7,7 +7,7 @@ from .models import Profile
 class ProfileAdmin(admin.ModelAdmin):
     """
     Class which handles what the admin can see from
-    the admin dashboard of the Profiles model and what
+    the admin dashboard of the Profile model and what
     can be filtered and searched.
     """
     list_display = ('user', 'favourite_genre', 'favourite_director', 'age')
