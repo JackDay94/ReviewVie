@@ -10,7 +10,6 @@ class Profile(models.Model):
         """
         Choices for the Genre field
         """
-        NP = 'NP', 'No Preference'
         ACT = 'ACT', 'Action'
         ADV = 'ADV', 'Adventure'
         COM = 'COM', 'Comedy'

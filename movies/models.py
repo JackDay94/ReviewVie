@@ -17,6 +17,7 @@ class Movies(models.Model):
     summary = models.TextField(max_length=1000)
     image = CloudinaryField("movie image", default="placeholder_image")
     average_stars = models.FloatField()
+    approved = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.name}"
