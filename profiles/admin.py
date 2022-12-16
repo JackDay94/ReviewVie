@@ -10,6 +10,15 @@ class ProfileAdmin(admin.ModelAdmin):
     the admin dashboard of the Profile model and what
     can be filtered and searched.
     """
-    list_display = ('user', 'favourite_genre', 'favourite_director', 'age')
-    list_filter = ('user', 'favourite_genre', 'favourite_director')
+    list_display = (
+        'user',
+        'favourite_genre',
+        'favourite_director',
+        'age'
+        )
+    list_filter = (
+        'user',
+        'favourite_genre',
+        'favourite_director'
+    )
     search_fields = ['user__username',]
