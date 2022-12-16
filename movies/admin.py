@@ -1,9 +1,15 @@
+"""Admin for the movies App"""
 from django.contrib import admin
 from .models import Movie, Review
 
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
+    """
+    Class which handles what the admin can see from
+    the admin dashboard of the Movie model and what
+    can be filtered and searched.
+    """
     list_display = (
         'name',
         'genre',
@@ -29,6 +35,11 @@ class MovieAdmin(admin.ModelAdmin):
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
+    """
+    Class which handles what the admin can see from
+    the admin dashboard of the Review model and what
+    can be filtered and searched.
+    """
     list_display = (
         'author',
         'movie',

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     """
-    Profile model
+    Profile model which extends the User model
     """
     class Genre(models.TextChoices):
         """
