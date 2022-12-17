@@ -1,10 +1,11 @@
 """Admin for the movies App"""
 from django.contrib import admin
 from .models import Movie, Review
+from django_summernote.admin import SummernoteModelAdmin
 
 
 @admin.register(Movie)
-class MovieAdmin(admin.ModelAdmin):
+class MovieAdmin(SummernoteModelAdmin):
     """
     Class which handles what the admin can see from
     the admin dashboard of the Movie model and what
@@ -31,10 +32,14 @@ class MovieAdmin(admin.ModelAdmin):
         'genre',
         'director',
         ]
+    prepopulated_fields = {
+        'slug': ('name',)
+    }
+    summernote_fields = ('summary')
 
 
 @admin.register(Review)
-class ReviewAdmin(admin.ModelAdmin):
+class ReviewAdmin(SummernoteModelAdmin):
     """
     Class which handles what the admin can see from
     the admin dashboard of the Review model and what
@@ -54,3 +59,4 @@ class ReviewAdmin(admin.ModelAdmin):
         'author',
         'movie',
     ]
+    summernote_fields = ('review_content')
