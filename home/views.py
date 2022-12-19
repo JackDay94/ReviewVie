@@ -5,4 +5,4 @@ from movies.models import Movie
 
 
 def home(request):
-    return HttpResponse('<h1>ReviewVie Home</h1>')
+    return render(request, 'base.html')
