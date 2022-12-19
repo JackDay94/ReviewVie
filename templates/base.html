@@ -64,8 +64,23 @@
         </nav>
     </header>
 
-    <footer>
+    <div id="content-wrapper" class="container-fluid">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer class="bg-dark">
         <!-- Social Media links -->
+        <ul class="media-icons">
+            <li><a href="https://www.facebook.com" target="_blank" aria-label="Open Facebook in a new tab"
+                    rel="noopener"><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="https://www.twitter.com" target="_blank" aria-label="Open Twitter in a new tab"
+                    rel="noopener"><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a href="https://www.youtube.com" target="_blank" aria-label="Open Youtube in a new tab"
+                    rel="noopener"><i class="fa-brands fa-youtube"></i></a></li>
+            <li><a href="https://www.instagram.com" target="_blank" aria-label="Open Instagram in a new tab"
+                    rel="noopener"><i class="fa-brands fa-instagram"></i></a></li>
+        </ul>
     </footer>
     <!-- Font Awesome Script -->
     <script src="https://kit.fontawesome.com/9918a76ce2.js" crossorigin="anonymous"></script>
