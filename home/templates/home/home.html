@@ -1,3 +1,17 @@
 {% extends "base.html" %}
  
 {% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center pt-3">
+            {% for movie in object_list %}
+            <a href="#">
+            <img src="{{ movie.image.url }}" alt="Top Rated Movie" class="top-movie">
+            </a>
+            <h1>Top Rated Movie: {{ movie.name }} </h1>
+            <h2>Rating: <i class="fa-solid fa-star"></i> {{ movie.average_stars }}</h2>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

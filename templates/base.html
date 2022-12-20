@@ -52,7 +52,7 @@
                         {% if request.user.is_authenticated %}
                         {% else %}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Register</a>
+                            <a href="{% url 'account_signup' %}" class="nav-link">Register</a>
                         </li>
                         {% endif %}
                         {% if request.user.is_authenticated %}

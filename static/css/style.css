@@ -13,7 +13,6 @@ body {
 #content-wrapper {
     background-color: rgb(130, 147, 153);
     max-width: 1300px;
-    height: 100vh;
 }
 
 /* Navbar */
@@ -53,4 +52,11 @@ footer {
 
 .media-icons a:hover {
     color: lightgray;
+}
+
+/* Home page Styles */
+
+.top-movie {
+    object-fit: cover;
+    max-width: 60%;
 }

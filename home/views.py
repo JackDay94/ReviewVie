@@ -4,5 +4,11 @@ from django.http import HttpResponse
 from movies.models import Movie
 
 
-def home(request):
-    return render(request, 'base.html')
+class TopMovie(ListView):
+    model = Movie
+    template_name = 'home/home.html'
+    queryset = Movie.objects.filter(approved=True).order_by(
+        '-average_stars')[:1]
+
+# def home(request):
+#     return render(request, 'home/home.html')
