@@ -11,8 +11,9 @@ body {
 /* Main site content wrapper */
 
 #content-wrapper {
-    background-color: rgb(130, 147, 153);
+    background-color: rgba(245, 245, 245, 0.6);
     max-width: 1300px;
+    min-height: 100vh;
 }
 
 /* Navbar */
@@ -56,7 +57,17 @@ footer {
 
 /* Home page Styles */
 
-.top-movie {
+.top-movie-img {
     object-fit: cover;
     max-width: 60%;
+    max-height: 90%;
+    border: outset black 10px;
+}
+
+#top-movie {
+    max-height: 60vh;
+}
+
+.star-rating {
+    color: yellow;
 }

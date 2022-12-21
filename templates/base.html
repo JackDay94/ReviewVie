@@ -25,7 +25,7 @@
         <!-- Navigation -->
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a href="#" class="navbar-brand logo">
+                <a href="{% url 'home' %}" class="navbar-brand logo">
                     <i class="fa-solid fa-film p-2"></i><span class="text-warning">Review</span><span
                         class="text-danger">Vie</span>
                 </a>
@@ -37,7 +37,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">Home</a>
+                            <a href="{% url 'home' %}" class="nav-link active">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"

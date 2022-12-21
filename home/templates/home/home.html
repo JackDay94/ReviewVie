@@ -3,14 +3,36 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 text-center pt-3">
-            {% for movie in object_list %}
+        <div class="col-12 text-center pt-3" id="top-movie">
+            {% for movie in movies.top_movie %}
             <a href="#">
-            <img src="{{ movie.image.url }}" alt="Top Rated Movie" class="top-movie">
+            <img src="{{ movie.image.url }}" alt="Top Rated Movie" class="top-movie-img">
             </a>
-            <h1>Top Rated Movie: {{ movie.name }} </h1>
-            <h2>Rating: <i class="fa-solid fa-star"></i> {{ movie.average_stars }}</h2>
+            <h1 class="fs-3 fw-bold">Top Rated Movie: {{ movie.name }} </h1>
+            <h2 class="fs-4">Rating: {{ movie.average_stars }} <i class="fa-solid fa-star star-rating"></i> </h2>
             {% endfor %}
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+    <div class="row">
+        <div class="col-12 pt-3">
+            <h3>Recommended Movies</h3>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-12">
+            <h3>Highest Rated</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3>Latest Releases</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3>Latest Reviews</h3>
         </div>
     </div>
 </div>

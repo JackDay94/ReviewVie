@@ -4,11 +4,18 @@ from django.http import HttpResponse
 from movies.models import Movie
 
 
-class TopMovie(ListView):
+class MoviesHome(ListView):
     model = Movie
     template_name = 'home/home.html'
-    queryset = Movie.objects.filter(approved=True).order_by(
-        '-average_stars')[:1]
+    context_object_name = 'movies'
 
-# def home(request):
-#     return render(request, 'home/home.html')
+    def get_queryset(self):
+        queryset = {
+            'top_movie': Movie.objects.filter(approved=True).order_by(
+                '-average_stars')[:1],
+            'top_rated': Movie.objects.filter(approved=True).order_by(
+                '-average_stars')[:4],
+            'new_release': Movie.objects.filter(approved=True).order_by(
+                '-release_date')[:4],
+        }
+        return queryset
