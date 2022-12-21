@@ -1,4 +1,5 @@
 body {
+    font-family: 'Lato', sans-serif;
     background-color: rgba(0, 0, 0, 0.9) !important;
     background-image: 
     radial-gradient(circle at center center, transparent,rgb(33,33,33)),
@@ -70,4 +71,14 @@ footer {
 
 .star-rating {
     color: yellow;
+}
+
+.card {
+    background: none !important;
+    border: none !important;
+}
+
+.movie-img {
+    max-height: 100%;
+    width: 100%;
 }
