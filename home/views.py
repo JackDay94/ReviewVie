@@ -20,3 +20,10 @@ class MoviesHome(ListView):
             'new_review': Review.objects.order_by('-created_on')[:4],
         }
         return queryset
+
+
+class AllMovies(ListView):
+    model = Movie
+    template_name = 'home/all-movies.html'
+    context_object_name = 'movies'
+    paginate_by = 16

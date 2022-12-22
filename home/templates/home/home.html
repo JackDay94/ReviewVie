@@ -27,15 +27,13 @@
         <h3 class="fw-semibold">Highest Rated</h3>
         {% for movie in movies.top_rated %}
         <div class="col-md-6 col-6 col-lg-3">
-            <div class="card">
-                <div class="text-center">
-                    <a href="#">
-                        <img src="{{ movie.image.url }}" alt="{{ movie.name }}" class="movie-img">
-                    </a>
-                    <h4 class="text-center">{{ movie.name }}</h4>
-                    <p class="text-center">{{ movie.average_stars }} <i class="fa-solid fa-star star-rating"></i>
-                    </p>
-                </div>
+            <div class="card text-center">
+                <a href="#">
+                    <img src="{{ movie.image.url }}" alt="{{ movie.name }}" class="movie-img">
+                </a>
+                <h4 class="text-center">{{ movie.name }}</h4>
+                <p class="text-center">{{ movie.average_stars }} <i class="fa-solid fa-star star-rating"></i>
+                </p>
             </div>
         </div>
         {% endfor %}
@@ -44,14 +42,12 @@
         <h3 class="fw-semibold">Latest Releases</h3>
         {% for movie in movies.new_release %}
         <div class="col-md-6 col-6 col-lg-3">
-            <div class="card">
-                <div class="text-center">
-                    <a href="#">
-                        <img src="{{ movie.image.url }}" alt="{{ movie.name }}" class="movie-img">
-                    </a>
-                    <h4 class="text-center">{{ movie.name }}</h4>
-                    <p class="text-center">{{ movie.release_date }}</p>
-                </div>
+            <div class="card text-center">
+                <a href="#">
+                    <img src="{{ movie.image.url }}" alt="{{ movie.name }}" class="movie-img">
+                </a>
+                <h4 class="text-center">{{ movie.name }}</h4>
+                <p class="text-center">{{ movie.release_date }}</p>
             </div>
         </div>
         {% endfor %}
@@ -65,6 +61,13 @@
                     {{ movie.author }}, {{ movie.created_on }}</li>
             </ul>
             {% endfor %}
+        </div>
+    </div>
+    <div class="row pb-3">
+        <div class="col-12 text-center">
+            <a href="{% url 'all-movies' %}">
+                <button type="button" class="btn btn-light btn-lg">All Movies</button>
+            </a>
         </div>
     </div>
 </div>
