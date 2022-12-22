@@ -3,70 +3,62 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
+        {% for movie in movies.top_movie %}
         <div class="col-12 text-center pt-3" id="top-movie">
-            {% for movie in movies.top_movie %}
             <a href="#">
                 <img src="{{ movie.image.url }}" alt="Top Rated Movie" class="top-movie-img">
             </a>
-            <h1 class="fs-3 fw-bold">Top Rated Movie: {{ movie.name }} </h1>
-            <h2 class="fs-4">Rating: {{ movie.average_stars }} <i class="fa-solid fa-star star-rating"></i> </h2>
-            {% endfor %}
         </div>
+        <div class="col-12 text-center pt-3"> 
+            <h1 class="fs-3 fw-bold">Top Rated Movie: {{ movie.name }} </h1>
+            <h2 class="fs-4">Rating: {{ movie.average_stars }} <i class="fa-solid fa-star star-rating"></i> </h2> 
+        </div>
+        {% endfor %}
     </div>
     {% if user.is_authenticated %}
     <div class="row">
-        <div class="col-12 pt-3">
-            <h3>Recommended Movies</h3>
+        <h3>Recommended Movies</h3>
+        <div class="col-md-6 col-6 col-lg-3">
+
         </div>
     </div>
     {% endif %}
     <div class="row">
         <h3>Top Rated</h3>
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    {% for movie in movies.top_rated %}
-                    <div class="col-md-6 col-6 col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <a href="#">
-                                    <img src="{{ movie.image.url }}" alt="{{ move.name }}" class="movie-img">
-                                    </a>
-                                    <h4 class="text-center">{{ movie.name }}</h4>
-                                    <p class="text-center">{{ movie.average_stars }} <i class="fa-solid fa-star star-rating"></i></p>
-                                </div>
-                            </div>
-                        </div>
+        {% for movie in movies.top_rated %}
+        <div class="col-md-6 col-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <a href="#">
+                            <img src="{{ movie.image.url }}" alt="{{ move.name }}" class="movie-img">
+                        </a>
+                        <h4 class="text-center">{{ movie.name }}</h4>
+                        <p class="text-center">{{ movie.average_stars }} <i class="fa-solid fa-star star-rating"></i>
+                        </p>
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
     <div class="row">
         <h3>Latest Releases</h3>
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    {% for movie in movies.new_release %}
-                    <div class="col-sm-6 col-6 col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <a href="#">
-                                    <img src="{{ movie.image.url }}" alt="{{ move.name }}" class="movie-img">
-                                    </a>
-                                    <h4 class="text-center">{{ movie.name }}</h4>
-                                    <p class="text-center">{{ movie.average_stars }} <i class="fa-solid fa-star star-rating"></i></p>
-                                </div>
-                            </div>
-                        </div>
+        {% for movie in movies.new_release %}
+        <div class="col-md-6 col-6 col-lg-3">
+            <div class="card">
+                <div class="card-body movie-feature">
+                    <div class="text-center">
+                        <a href="#">
+                            <img src="{{ movie.image.url }}" alt="{{ move.name }}" class="movie-img">
+                        </a>
+                        <h4 class="text-center">{{ movie.name }}</h4>
+                        <p class="text-center">{{ movie.release_date }}</p>     
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
     <div class="row">
         <div class="col-12">

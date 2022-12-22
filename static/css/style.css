@@ -1,5 +1,5 @@
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', sans-serif !important;
     background-color: rgba(0, 0, 0, 0.9) !important;
     background-image: 
     radial-gradient(circle at center center, transparent,rgb(33,33,33)),
@@ -12,7 +12,7 @@ body {
 /* Main site content wrapper */
 
 #content-wrapper {
-    background-color: rgba(245, 245, 245, 0.6);
+    background-color: rgba(230, 230, 230, 0.4);
     max-width: 1300px;
     min-height: 100vh;
 }
@@ -61,7 +61,7 @@ footer {
 .top-movie-img {
     object-fit: cover;
     max-width: 60%;
-    max-height: 90%;
+    max-height: 100%;
     border: outset black 10px;
 }
 
@@ -74,11 +74,16 @@ footer {
 }
 
 .card {
-    background: none !important;
+    background: white !important;
     border: none !important;
+    margin-top: 10px;
 }
 
 .movie-img {
     max-height: 100%;
     width: 100%;
+}
+
+.card-body {
+    max-height: 40vh;
 }
