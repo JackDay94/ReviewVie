@@ -22,8 +22,18 @@ class MoviesHome(ListView):
         return queryset
 
 
-class AllMovies(ListView):
+class MovieList(ListView):
     model = Movie
     template_name = 'home/all-movies.html'
     context_object_name = 'movies'
     paginate_by = 16
+
+
+class MovieSearch(ListView):
+    model = Movie
+    template_name = 'home/all-movies.html'
+    context_object_name = 'movies'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        return Movie.objects.filter(name__icontains=query)
