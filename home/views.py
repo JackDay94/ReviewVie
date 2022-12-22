@@ -35,5 +35,5 @@ class MovieSearch(ListView):
     context_object_name = 'movies'
 
     def get_queryset(self):
-        query = self.request.GET.get('q')
+        query = self.request.GET.get('search')
         return Movie.objects.filter(name__icontains=query)

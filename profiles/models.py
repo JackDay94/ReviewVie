@@ -10,22 +10,22 @@ class Profile(models.Model):
         """
         Choices for the Genre field
         """
-        ACT = 'ACT', 'Action'
-        ADV = 'ADV', 'Adventure'
-        COM = 'COM', 'Comedy'
-        CRI = 'CRI', 'Crime'
-        DRA = 'DRA', 'Drama'
-        FAM = 'FAM', 'Family'
-        FAN = 'FAN', 'Fantasy'
-        HOR = 'HOR', 'Horror'
-        MUS = 'MUS', 'Music'
-        ROM = 'ROM', 'Romance'
-        SCI = 'SCI', 'Sci-Fi'
-        SPT = 'SPT', 'Sport'
-        SUP = 'SUP', 'Superhero'
-        THR = 'THR', 'Thriller'
-        WAR = 'WAR', 'War'
-        WST = 'WST', 'Western'
+        ACT = 'Action', 'Action'
+        ADV = 'Adventure', 'Adventure'
+        COM = 'Comedy', 'Comedy'
+        CRI = 'Crime', 'Crime'
+        DRA = 'Drama', 'Drama'
+        FAM = 'Family', 'Family'
+        FAN = 'Fantasy', 'Fantasy'
+        HOR = 'Horror', 'Horror'
+        MUS = 'Music', 'Music'
+        ROM = 'Romance', 'Romance'
+        SCI = 'Sci-Fi', 'Sci-Fi'
+        SPT = 'Sport', 'Sport'
+        SUP = 'Superhero', 'Superhero'
+        THR = 'Thriller', 'Thriller'
+        WAR = 'War', 'War'
+        WST = 'Western', 'Western'
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     favourite_genre = models.CharField(

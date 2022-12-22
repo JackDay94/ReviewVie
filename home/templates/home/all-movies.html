@@ -7,12 +7,22 @@ ReviewVie - All Movies
 {% block content %}
 <div class="container-fluid">
     <h1 class="text-center pt-3 fw-bold">All Movies</h1>
-    <div class="row">
+    <div class="row pb-3">
         <!-- Search form -->
-        <form action="{% url 'search-result' %}" method="GET" class="text-center pb-3">
+        <form action="{% url 'search-result' %}" method="GET" class="text-center">
             {% csrf_token %}
-            <input type="text" name="q" placeholder="Search Movies" class="search-bar me-2">
+            <input type="text" name="search" placeholder="Search Movies" class="search-bar me-2">
             <button type="submit" class="btn btn-dark">Search</button>
+        </form>
+    </div>
+    <div class="row pb-3">
+        <form action="" method="GET" class="text-center">
+            <label for="director">Director</label>
+            <select name="director" id="director">
+                {% for movie in movies %}
+                <option value="{{ movie.director }}">{{ movie.director }}</option>
+                {% endfor %}
+            </select>
         </form>
     </div>
     <div class="row">
