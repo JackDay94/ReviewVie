@@ -61,7 +61,7 @@ footer {
 .top-movie-img {
     height: auto;
     max-height: 100%;
-    border: outset black 10px;
+    border: outset gold 5px;
 }
 
 #top-movie {
@@ -70,7 +70,7 @@ footer {
 }
 
 .star-rating {
-    color: yellow;
+    color: gold;
 }
 
 .card {
@@ -81,6 +81,6 @@ footer {
 .movie-img {
     height: auto;
     max-width: 100%;
-    max-height: 300px;
+    max-height: 350px;
     border-radius: 5px;
 }

@@ -24,7 +24,7 @@
     </div>
     {% endif %}
     <div class="row">
-        <h3 class="fw-semibold">Top Rated</h3>
+        <h3 class="fw-semibold">Highest Rated</h3>
         {% for movie in movies.top_rated %}
         <div class="col-md-6 col-6 col-lg-3">
             <div class="card">
@@ -57,11 +57,12 @@
         {% endfor %}
     </div>
     <div class="row">
+        <h3 class="fw-semibold">Latest Reviews</h3>
         <div class="col-12">
-            <h3 class="fw-semibold">Latest Reviews</h3>
             {% for movie in movies.new_review %}
             <ul>
-                <li>{{ movie.movie }}</li>
+                <li>{{ movie.movie }}: {{ movie.rating }} <i class="fa-solid fa-star star-rating"></i> - by
+                    {{ movie.author }}, {{ movie.created_on }}</li>
             </ul>
             {% endfor %}
         </div>
