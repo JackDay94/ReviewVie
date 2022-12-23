@@ -11,16 +11,40 @@ ReviewVie - All Movies
         <!-- Search form -->
         <form action="{% url 'search-result' %}" method="GET" class="text-center">
             {% csrf_token %}
-            <input type="text" name="search" placeholder="Search Movies" class="search-bar me-2">
+            <input type="text" name="search" placeholder="Search Movies/Director" class="search-bar me-2">
             <button type="submit" class="btn btn-dark">Search</button>
         </form>
     </div>
     <div class="row pb-3">
-        <form action="" method="GET" class="text-center">
+        <form action="" method="GET" class="text-center filters">
             <label for="director">Director</label>
             <select name="director" id="director">
                 {% for movie in movies %}
                 <option value="{{ movie.director }}">{{ movie.director }}</option>
+                {% endfor %}
+            </select>
+        </form>
+        <form action="" method="GET" class="text-center filters">
+            <label for="genre">Genre</label>
+            <select name="genre" id="genre">
+                {% for movie in movies %}
+                <option value="{{ movie.genre }}">{{ movie.genre }}</option>
+                {% endfor %}
+            </select>
+        </form>
+        <form action="" method="GET" class="text-center filters">
+            <label for="age">Age</label>
+            <select name="age" id="age">
+                {% for movie in movies %}
+                <option value="{{ movie.age_rating }}">{{ movie.age_rating }}</option>
+                {% endfor %}
+            </select>
+        </form>
+        <form action="" method="GET" class="text-center filters">
+            <label for="stars">Rating</label>
+            <select name="stars" id="stars">
+                {% for movie in movies %}
+                <option value="{{ movie.average_stars }}">{{ movie.average_stars }}</option>
                 {% endfor %}
             </select>
         </form>
