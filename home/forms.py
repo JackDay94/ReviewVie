@@ -1,8 +1,8 @@
 from movies.models import Movie
-from django import forms
+from django.forms import ModelForm
 
 
-class MovieForm(forms.ModelForm):
+class MovieForm(ModelForm):
     class Meta:
         model = Movie
-        fields = {'name', 'genre', 'director', 'average_rating', }
+        fields = ('genre',)
