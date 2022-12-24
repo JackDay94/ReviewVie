@@ -8,20 +8,30 @@ ReviewVie - {{ movie.name }}
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 text-center pt-3" id="top-movie">
+            {% if "placeholder" in movie.image.url %}
+            <img src="https://via.placeholder.com/800.png?text=Movie+Awaiting+Image" alt="{{ movie.name }}" class="top-movie-img">
+            {% else %}
             <img src="{{ movie.image.url }}" alt="{{ movie.name }}" class="top-movie-img">
+            {% endif %}
         </div>
         <div class="col-12 text-center pt-3">
             <h1 class="fw-bold">{{ movie.name }} </h1>
             <h2 class="fw-semibold">Average Rating: {{ movie.average_stars }} <i class="fa-solid fa-star star-rating"></i></h2>
         </div>
     </div>
-    <div class="row">
+    <div class="row pb-2">
         <h4>Movie Information</h4>
-        <div class="col-12 text-align-left">
-            <p>Genre: {{ movie.genre }}</p>
+        <div class="col-12 movie-details">
+            <p class="pt-3">Genre: {{ movie.genre }}</p>
             <p>Release Date: {{ movie.release_date }}</p>
             <p>Directed by: {{ movie.director }}</p>
             <p>Age Rating: {{ movie.age_rating }}</p>
+        </div>
+    </div>
+    <div class="row pb-2">
+        <h4>Summary</h4>
+        <div class="col-12 movie-details">
+            <p class="pt-3">{{ movie.summary | safe }}</p>
         </div>
     </div>
 </div>
