@@ -38,7 +38,9 @@ class Review(models.Model):
     """
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    movie = models.ForeignKey(
+        Movie, on_delete=models.CASCADE, related_name="reviews"
+        )
     review_content = models.TextField(max_length=1000)
     rating = models.FloatField(default=0)
     created_on = models.DateTimeField(auto_now_add=True)

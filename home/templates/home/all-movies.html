@@ -10,7 +10,6 @@ ReviewVie - All Movies
     <div class="row pb-3">
         <!-- Search form -->
         <form action="{% url 'search-result' %}" method="GET" class="text-center">
-            {% csrf_token %}
             <input type="text" name="search" placeholder="Search Movies/Director/Genre" class="search-bar me-2">
             <button type="submit" class="btn btn-dark">Search</button>
         </form>
