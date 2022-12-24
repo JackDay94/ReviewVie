@@ -6,7 +6,7 @@
     <div class="row">
         {% for movie in movies.top_movie %}
         <div class="col-12 text-center pt-3" id="top-movie">
-            <a href="#">
+            <a href="{% url 'movie_detail' movie.slug %}">
                 <img src="{{ movie.image.url }}" alt="{{ movie.name }}" class="top-movie-img">
             </a>
         </div>
@@ -31,7 +31,7 @@
         {% for movie in movies.top_rated %}
         <div class="col-md-6 col-6 col-lg-3">
             <div class="card text-center">
-                <a href="#">
+                <a href="{% url 'movie_detail' movie.slug %}">
                     <img src="{{ movie.image.url }}" alt="{{ movie.name }}" class="movie-img">
                 </a>
                 <h4 class="text-center">{{ movie.name }}</h4>
@@ -47,7 +47,7 @@
         {% for movie in movies.new_release %}
         <div class="col-md-6 col-6 col-lg-3">
             <div class="card text-center">
-                <a href="#">
+                <a href="{% url 'movie_detail' movie.slug %}">
                     <img src="{{ movie.image.url }}" alt="{{ movie.name }}" class="movie-img">
                 </a>
                 <h4 class="text-center">{{ movie.name }}</h4>
