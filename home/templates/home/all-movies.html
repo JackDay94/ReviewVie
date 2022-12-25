@@ -16,6 +16,9 @@ ReviewVie - All Movies
     </div>
     <div class="row">
         <!-- Movie List -->
+        {% if movies.count == 0%}
+        <h4 class="text-center">Sorry! No matches to your search!</h4>
+        {% else %}
         {% for movie in movies %}
         <div class="col-md-6 col-6 col-lg-3">
             <div class="card text-center">
@@ -31,6 +34,7 @@ ReviewVie - All Movies
             </div>
         </div>
         {% endfor %}
+        {% endif %}
     </div>
 </div>
 {% endblock %}

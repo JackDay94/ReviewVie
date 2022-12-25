@@ -49,10 +49,11 @@ ReviewVie - {{ movie.name }}
     <div class="row">
         <h4 class="text-center fw-semibold">Leave a Review</h4>
         <div class="col-12 pb-3">
-            <h5>Leaving a review as: {{ user.username }}</h3>
-                <form action="" method="post">
+            <h5>Reviewing as: {{ user.username }}</h3>
+                <form action="" method="post" class="text-center">
                     {{ review_form | crispy }}
                     {% csrf_token%}
+                    <button type="submit" class="btn btn-dark mt-2">Submit</button>
                 </form>
         </div>
     </div>
@@ -68,7 +69,8 @@ ReviewVie - {{ movie.name }}
                 <div class="card-body review">
                     <div class="row review-headers">
                         <h5 class="col-md-3 col-6">{{ review.author }}</h5>
-                        <h5 class="col-md-3 col-6">Rating: {{ review.rating }} <i class="fa-solid fa-star star-rating"></i></h5>
+                        <h5 class="col-md-3 col-6">Rating: {{ review.rating }} <i
+                                class="fa-solid fa-star star-rating"></i></h5>
                         <h5 class="col-md-3 col-6">Created: {{ review.created_on }}</h5>
                         <h5 class="col-md-3 col-6">Edited: {{ review.edited_on }}</h5>
                     </div>
