@@ -19,7 +19,6 @@ class MovieDetail(View):
                 "movie": movie,
                 "reviews": reviews,
                 "review_form": ReviewForm(),
-                "reviewed": False,
             },
         )
 
@@ -45,6 +44,5 @@ class MovieDetail(View):
                 "movie": movie,
                 "reviews": reviews,
                 "review_form": ReviewForm(),
-                "reviewed": True,
             },
         )

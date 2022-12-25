@@ -9,7 +9,7 @@ ReviewVie - {{ movie.name }}
 <div class="container-fluid">
     {% if request.user.is_superuser %}
     <div class="row justify-content-center pt-3">
-        <button type="button" class="me-1 btn btn-dark movie-btn">Edit</button>
+        <button type="button" class="me-1 btn btn-warning movie-btn">Edit</button>
         <button type="button" class="ms-1 btn btn-danger movie-btn">Delete</button>
     </div>
     {% endif %}
@@ -45,20 +45,44 @@ ReviewVie - {{ movie.name }}
             <p>{{ movie.summary | safe }}</p>
         </div>
     </div>
-
+    {% if user.is_authenticated %}
     <div class="row">
-        <h4>Reviews</h4>
+        <h4 class="text-center fw-semibold">Leave a Review</h4>
         <div class="col-12 pb-3">
-            {% if reviewed == False %}
-            {% if user.is_authenticated %}
-            <h5>Leave a review as: {{ user.username }}</h3>
-            <form action="" method="post">
-                {{ review_form | crispy }}
-                {% csrf_token%}
-            </form>
-            {% endif %}
-            {% endif %}
+            <h5>Leaving a review as: {{ user.username }}</h3>
+                <form action="" method="post">
+                    {{ review_form | crispy }}
+                    {% csrf_token%}
+                </form>
         </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        <h4 class="text-center fw-semibold">Reviews</h4>
+        {% if reviews.count == 0 %}
+        <h5 class="text-center fw-semibold">No Reviews Yet!</h5>
+        {% else %}
+        <div class="col-12">
+            {% for review in reviews %}
+            <div class="card pb-3">
+                <div class="card-body review">
+                    <div class="row review-headers">
+                        <h5 class="col-md-3 col-6">{{ review.author }}</h5>
+                        <h5 class="col-md-3 col-6">Rating: {{ review.rating }} <i class="fa-solid fa-star star-rating"></i></h5>
+                        <h5 class="col-md-3 col-6">Created: {{ review.created_on }}</h5>
+                        <h5 class="col-md-3 col-6">Edited: {{ review.edited_on }}</h5>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            {{ review.review_content | safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
     </div>
 </div>
 

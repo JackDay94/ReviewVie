@@ -104,3 +104,12 @@ footer {
 .movie-btn {
     width: 100px !important;
 }
+
+.review {
+    background-color: rgb(211, 211, 211);
+    border-radius: 10px;
+}
+
+.review-headers h5 {
+    font-size: 16px;
+}
