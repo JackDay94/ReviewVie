@@ -49,7 +49,7 @@ ReviewVie - {{ movie.name }}
     <div class="row">
         <h4 class="text-center fw-semibold">Leave a Review</h4>
         <div class="col-12 pb-3">
-            <h5>Reviewing as: {{ user.username }}</h3>
+            <h5>Reviewing as: <strong>{{ user.username }}</strong></h3>
                 <form action="" method="post" class="text-center">
                     {{ review_form | crispy }}
                     {% csrf_token%}
@@ -77,7 +77,7 @@ ReviewVie - {{ movie.name }}
                     <hr>
                     <div class="row">
                         <div class="col-12">
-                            {{ review.review_content | safe }}
+                            {{ review.review_content | safe | linebreaks }}
                         </div>
                     </div>
                 </div>

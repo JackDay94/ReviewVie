@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+ReviewVie - Edit Review
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    {% if request.user.is_authenticated %}
+    {% if request.user == review.author or request.user.is_superuser %}
+    <div class="row">
+        <div class="col-12 text-center pt-3">
+            <h4 class="fw-semibold">Editing Review for: {{ movie_name }}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form action="" method="post" class="text-center pt-3">
+            {% csrf_token %}
+            {{ form | crispy | safe }}
+            <button type="submit" class="btn btn-success mt-3">Submit</button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-12 text-center pt-3">
+            <h1 class="fw-bold">Access Denied!</h1>
+        </div>
+    </div>
+    {% endif %}
+    {% else %}
+    <div class="row">
+        <div class="col-12 text-center pt-3">
+            <h1>You must sign in first to view this content!</h1>
+            <br>
+            <a href="{% url 'account_login' %}" class="text-black fs-3">Login here!</a>
+            <br>
+            <a href="{% url 'account_signup' %}" class="text-black fs-3">Sign up here!</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+
+{% endblock %}

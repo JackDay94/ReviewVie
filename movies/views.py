@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, View
+from django.views.generic import ListView, View, DetailView
 from django.http import HttpResponse
 from .models import Movie
 from .forms import ReviewForm
 
 
-class MovieDetail(View):
+class MovieDetail(DetailView):
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Movie.objects.filter(approved=True)
