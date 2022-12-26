@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, View, DetailView
+from django.views.generic import ListView, View, DetailView, UpdateView
 from django.http import HttpResponse
-from .models import Movie
+from django.urls import reverse_lazy
+from .models import Movie, Review
 from .forms import ReviewForm
 
 
@@ -46,3 +47,25 @@ class MovieDetail(DetailView):
                 "review_form": ReviewForm(),
             },
         )
+
+
+class UpdateReview(UpdateView):
+    model = Review
+
+    fields = [
+        "rating",
+        "review_content",
+    ]
+
+    template_name = 'movies/update_review.html'
+    success_url = reverse_lazy('home')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['movie_name'] = self.object.movie
+
+        return context
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
