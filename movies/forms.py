@@ -25,5 +25,6 @@ class AddMovieForm(ModelForm):
             "director",
             "age_rating",
             "summary",
+            "image",
         )
         widgets = {'release_date': DateInput()}

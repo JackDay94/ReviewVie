@@ -1,9 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import DetailView, UpdateView, DeleteView, CreateView
 from django.http import HttpResponse
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.template.defaultfilters import slugify
 from django.urls import reverse_lazy
-from cloudinary.forms import cl_init_js_callbacks
 from .models import Movie, Review
 from .forms import ReviewForm, AddMovieForm
 
@@ -83,7 +83,6 @@ class AddMovie(LoginRequiredMixin, CreateView):
     model = Movie
     form_class = AddMovieForm
     template_name = 'movies/add_movie.html'
-    success_url = reverse_lazy('home')
 
     def get_initial(self, *args, **kwargs):
         initial = super().get_initial(**kwargs)
@@ -91,3 +90,13 @@ class AddMovie(LoginRequiredMixin, CreateView):
         initial['director'] = 'Enter Movie Director'
         initial['summary'] = 'Enter a summary for the movie. NO SPOILERS!'
         return initial
+
+    def post(self, request):
+        if request.method == "POST":
+            form = AddMovieForm(request.POST)
+            if form.is_valid():
+                new_movie = form.save(commit=False)
+                new_movie.slug = slugify(new_movie.name)
+                new_movie.save()
+        form = AddMovieForm()
+        return redirect("home")
