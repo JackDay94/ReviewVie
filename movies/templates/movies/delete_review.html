@@ -7,13 +7,16 @@ ReviewVie - Delete Review
 {% block content %}
 
 <div class="container-fluid">
+    <!-- Checks the current user is same as the review author or is a superuser -->
     {% if request.user == review.author or request.user.is_superuser %}
+    <!-- Delete Review heading -->
     <div class="row">
         <div class="col-12 text-center pt-3">
             <h4 class="fw-semibold">You are about to delete your review for: {{ review.movie }}</h4>
             <h5 class="fw-semibold">Are you sure? This cannot be undone!</h5>
         </div>
     </div>
+    <!-- User Review content -->
     <div class="row">
         <div class="col-12 pt-3">
             <div class="card pb-3">
@@ -33,12 +36,14 @@ ReviewVie - Delete Review
                     </div>
                 </div>
             </div>
+            <!-- Delete Review button -->
             <form action="" method="post" class="text-center">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger mt-3">Delete</button>
             </form>
         </div>
     </div>
+    <!-- Displays message if the current user is not the review author -->
     {% else %}
     <div class="row">
         <div class="col-12 text-center pt-3">

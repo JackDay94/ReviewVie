@@ -8,12 +8,15 @@ ReviewVie - Edit Review
 {% block content %}
 
 <div class="container-fluid">
+    <!-- Checks the current user is same as the review author or is a superuser -->
     {% if request.user == review.author or request.user.is_superuser %}
+    <!-- Edit Review title-->
     <div class="row">
         <div class="col-12 text-center pt-3">
             <h4 class="fw-semibold">Editing Review for: {{ movie_name }}</h4>
         </div>
     </div>
+    <!-- Edit Review form -->
     <div class="row">
         <div class="col-12">
             <form action="" method="post" class="text-center pt-3">
@@ -23,6 +26,7 @@ ReviewVie - Edit Review
             </form>
         </div>
     </div>
+    <!-- Displays message if the current user is not the review author -->
     {% else %}
     <div class="row">
         <div class="col-12 text-center pt-3">

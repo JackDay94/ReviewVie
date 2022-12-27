@@ -7,12 +7,14 @@ ReviewVie - {{ movie.name }}
 
 {% block content %}
 <div class="container-fluid">
+    <!-- Edit and Delete buttons only viewable by superuser-->
     {% if request.user.is_superuser %}
     <div class="row justify-content-center pt-3">
         <button type="button" class="me-1 btn btn-warning movie-btn">Edit</button>
         <button type="button" class="ms-1 btn btn-danger movie-btn">Delete</button>
     </div>
     {% endif %}
+    <!-- Movie image, name and rating -->
     <div class="row">
         <div class="col-12 text-center pt-3" id="top-movie">
             {% if "placeholder" in movie.image.url %}
@@ -30,6 +32,7 @@ ReviewVie - {{ movie.name }}
             {% endwith %}
         </div>
     </div>
+    <!-- Movie information -->
     <div class="row pb-2">
         <div class="col-md-4 movie-details">
             <h4 class="text-center fw-bold">Movie Information</h4>
@@ -45,6 +48,7 @@ ReviewVie - {{ movie.name }}
             <p>{{ movie.summary | safe }}</p>
         </div>
     </div>
+    <!-- Add Review section -->
     {% if user.is_authenticated %}
     <div class="row">
         <h4 class="text-center fw-semibold">Leave a Review</h4>
@@ -58,6 +62,7 @@ ReviewVie - {{ movie.name }}
         </div>
     </div>
     {% endif %}
+    <!-- All Reviews for movie -->
     <div class="row">
         <h4 class="text-center fw-semibold">Reviews</h4>
         {% if reviews.count == 0 %}
