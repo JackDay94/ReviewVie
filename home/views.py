@@ -34,9 +34,10 @@ class MovieSearch(ListView):
     model = Movie
     template_name = 'home/all-movies.html'
     context_object_name = 'movies'
+    paginate_by = 16
 
     def get_queryset(self):
-        query = self.request.GET.get('search')
+        query = self.request.GET.get('search', '')
         return Movie.objects.filter(
             name__icontains=query
             ).filter(approved=True) | Movie.objects.filter(
