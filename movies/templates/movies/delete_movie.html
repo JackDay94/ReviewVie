@@ -41,6 +41,7 @@ ReviewVie - Delete Movie
             <hr>
             <p>{{ movie.summary | safe }}</p>
         </div>
+        <!-- Delete movie button -->
         <form action="" method="post" class="text-center">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger mt-3">Delete</button>

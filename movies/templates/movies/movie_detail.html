@@ -12,7 +12,8 @@ ReviewVie - {{ movie.name }}
     <div class="row justify-content-center pt-3">
         <a href="{% url 'update_movie' movie.slug %}" class="movie-btn btn btn-warning me-1" role="button"
             aria-label="Go to Movie edit page">Edit</a>
-        <a href="#" class="ms-1 btn btn-danger movie-btn" role="button" aria-label="Go to Movie delete page">Delete</a>
+        <a href="{% url 'delete_movie' movie.slug %}" class="ms-1 btn btn-danger movie-btn" role="button"
+            aria-label="Go to Movie delete page">Delete</a>
     </div>
     {% endif %}
     <!-- Movie image, name and rating -->

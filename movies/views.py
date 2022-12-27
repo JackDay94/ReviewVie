@@ -110,3 +110,12 @@ class UpdateMovie(UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         return self.request.user.is_superuser
+
+
+class DeleteMovie(UserPassesTestMixin, DeleteView):
+    model = Movie
+    template_name = 'movies/delete_movie.html'
+    success_url = reverse_lazy('home')
+
+    def test_func(self):
+        return self.request.user.is_superuser
