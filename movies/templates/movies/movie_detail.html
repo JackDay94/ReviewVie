@@ -75,7 +75,7 @@ ReviewVie - {{ movie.name }}
                         <h5 class="col-md-2 col-6">Edited: {{ review.edited_on }}</h5>
                         {% if request.user == review.author or request.user.is_superuser %}
                         <h5 class="col-md-2 col-6"><a href="{% url 'update_review' review.id %}">Edit</a></h5>
-                        <h5 class="col-md-2 col-6"><a href="#">Delete</a></h5>
+                        <h5 class="col-md-2 col-6"><a href="{% url 'delete_review' review.id %}">Delete</a></h5>
                         {% endif %}
                     </div>
                     <hr>

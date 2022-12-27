@@ -70,3 +70,9 @@ class UpdateReview(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+
+
+class DeleteReview(LoginRequiredMixin, DeleteView):
+    model = Review
+    template_name = 'movies/delete_review.html'
+    success_url = reverse_lazy('home')

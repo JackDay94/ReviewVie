@@ -10,16 +10,30 @@ ReviewVie - Delete Review
     {% if request.user == review.author or request.user.is_superuser %}
     <div class="row">
         <div class="col-12 text-center pt-3">
-            <h4 class="fw-semibold">You are about to delete your review for: {{ movie_name }}</h4>
+            <h4 class="fw-semibold">You are about to delete your review for: {{ review.movie }}</h4>
             <h5 class="fw-semibold">Are you sure? This cannot be undone!</h5>
         </div>
     </div>
     <div class="row">
-        <div class="col-12">
-            {{ review.rating }}
-            <br>
-            {{ review.review_content }}
-            <form action="" method="post" class="text-center pt-3">
+        <div class="col-12 pt-3">
+            <div class="card pb-3">
+                <div class="card-body review">
+                    <div class="row review-headers">
+                        <h5 class="col-md-3 col-6">{{ review.author }}</h5>
+                        <h5 class="col-md-3 col-6">Rating: {{ review.rating }} <i
+                                class="fa-solid fa-star star-rating"></i></h5>
+                        <h5 class="col-md-3 col-6">Created: {{ review.created_on }}</h5>
+                        <h5 class="col-md-3 col-6">Edited: {{ review.edited_on }}</h5>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            {{ review.review_content | safe | linebreaks }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form action="" method="post" class="text-center">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger mt-3">Delete</button>
             </form>
