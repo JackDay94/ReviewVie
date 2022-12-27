@@ -10,8 +10,9 @@ ReviewVie - {{ movie.name }}
     <!-- Edit and Delete buttons only viewable by superuser-->
     {% if request.user.is_superuser %}
     <div class="row justify-content-center pt-3">
-        <button type="button" class="me-1 btn btn-warning movie-btn">Edit</button>
-        <button type="button" class="ms-1 btn btn-danger movie-btn">Delete</button>
+        <a href="{% url 'update_movie' movie.slug %}" class="movie-btn btn btn-warning me-1" role="button"
+            aria-label="Go to Movie edit page">Edit</a>
+        <a href="#" class="ms-1 btn btn-danger movie-btn" role="button" aria-label="Go to Movie delete page">Delete</a>
     </div>
     {% endif %}
     <!-- Movie image, name and rating -->

@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.template.defaultfilters import slugify
 from django.urls import reverse_lazy
 from .models import Movie, Review
-from .forms import ReviewForm, AddMovieForm
+from .forms import ReviewForm, AddMovieForm, UpdateMovieForm
 
 
 class MovieDetail(DetailView):
@@ -100,3 +100,13 @@ class AddMovie(LoginRequiredMixin, CreateView):
                 new_movie.save()
         form = AddMovieForm()
         return redirect("home")
+
+
+class UpdateMovie(UserPassesTestMixin, UpdateView):
+    model = Movie
+    form_class = UpdateMovieForm
+    template_name = 'movies/update_movie.html'
+    success_url = reverse_lazy('home')
+
+    def test_func(self):
+        return self.request.user.is_superuser

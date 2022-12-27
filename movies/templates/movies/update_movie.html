@@ -19,9 +19,9 @@ ReviewVie - Edit Movie
     <div class="row">
         <div class="col-12 pb-3">
             <form action="" method="post" class="text-center">
-                {{ form | crispy }}
+                {{ form | crispy | safe }}
                 {% csrf_token %}
-                <button type="submit" class="btn btn-dark mt-2">Submit</button>
+                <button type="submit" class="btn btn-success mt-2">Submit</button>
             </form>
         </div>
     </div>
