@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import View, DetailView, UpdateView, DeleteView
+from django.views.generic import DetailView, UpdateView, DeleteView, CreateView
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from cloudinary.forms import cl_init_js_callbacks
 from .models import Movie, Review
-from .forms import ReviewForm
+from .forms import ReviewForm, AddMovieForm
 
 
 class MovieDetail(DetailView):
@@ -76,3 +77,17 @@ class DeleteReview(LoginRequiredMixin, DeleteView):
     model = Review
     template_name = 'movies/delete_review.html'
     success_url = reverse_lazy('home')
+
+
+class AddMovie(LoginRequiredMixin, CreateView):
+    model = Movie
+    form_class = AddMovieForm
+    template_name = 'movies/add_movie.html'
+    success_url = reverse_lazy('home')
+
+    def get_initial(self, *args, **kwargs):
+        initial = super().get_initial(**kwargs)
+        initial['name'] = 'Enter Movie Name'
+        initial['director'] = 'Enter Movie Director'
+        initial['summary'] = 'Enter a summary for the movie. NO SPOILERS!'
+        return initial

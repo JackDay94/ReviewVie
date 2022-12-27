@@ -1,5 +1,9 @@
 from .models import Review, Movie
-from django.forms import ModelForm
+from django.forms import ModelForm, DateInput
+
+
+class DateInput(DateInput):
+    input_type = 'date'
 
 
 class ReviewForm(ModelForm):
@@ -21,5 +25,5 @@ class AddMovieForm(ModelForm):
             "director",
             "age_rating",
             "summary",
-            "image",
         )
+        widgets = {'release_date': DateInput()}
