@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+ReviewVie - Edit Movie
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <!-- Edit Movie title -->
+    <div class="row">
+        <div class="col-12 text-center pt-3">
+            <h1 class="fw-bold">Edit Movie</h1>
+            <h4 class="fw-semibold">Editing for {{ movie.name }}.</h4>
+        </div>
+    </div>
+    <!-- Edit Movie Form -->
+    <div class="row">
+        <div class="col-12 pb-3">
+            <form action="" method="post" class="text-center">
+                {{ form | crispy }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-dark mt-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
