@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+ReviewVie - Delete Movie
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <!-- Delete Movie title -->
+    <div class="row">
+        <div class="col-12 text-center pt-3">
+            <h1 class="fw-bold">Delete Movie</h1>
+            <h4 class="fw-semibold">You are about to delete {{ movie.name }}.</h4>
+            <h5 class="fw-semibold">Are you sure? This cannot be undone.</h4>
+        </div>
+    </div>
+    <!-- Delete Movie details -->
+    <div class="row">
+        <div class="col-12 text-center pt-3 pb-3" id="delete-movie-img">
+            {% if "placeholder" in movie.image.url %}
+            <img src="https://via.placeholder.com/800.png?text=Movie+Awaiting+Image" alt="{{ movie.name }}"
+                class="top-movie-img">
+            {% else %}
+            <img src="{{ movie.image.url }}" alt="{{ movie.name }}" class="top-movie-img">
+            {% endif %}
+        </div>
+    </div>
+    <div class="row pb-2">
+        <div class="col-md-4 movie-details">
+            <h4 class="text-center fw-bold">Movie Information</h4>
+            <hr>
+            <p><span class="fw-semibold">Genre:</span> {{ movie.genre }}</p>
+            <p><span class="fw-semibold">Release Date:</span> {{ movie.release_date }}</p>
+            <p><span class="fw-semibold">Directed by:</span> {{ movie.director }}</p>
+            <p><span class="fw-semibold">Age Rating:</span> {{ movie.age_rating }}</p>
+        </div>
+        <div class="col-md-8 movie-details">
+            <h4 class="text-center fw-bold">Summary</h4>
+            <hr>
+            <p>{{ movie.summary | safe }}</p>
+        </div>
+        <form action="" method="post" class="text-center">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger mt-3">Delete</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

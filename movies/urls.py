@@ -1,5 +1,7 @@
 from django.urls import path
-from .views import MovieDetail, UpdateReview, DeleteReview, AddMovie, UpdateMovie
+from .views import (
+     MovieDetail, UpdateReview, DeleteReview, AddMovie, UpdateMovie
+     )
 
 
 urlpatterns = [
