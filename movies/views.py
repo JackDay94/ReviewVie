@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, View, DetailView, UpdateView
+from django.views.generic import View, DetailView, UpdateView, DeleteView
 from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Movie, Review
 from .forms import ReviewForm
@@ -49,7 +50,7 @@ class MovieDetail(DetailView):
         )
 
 
-class UpdateReview(UpdateView):
+class UpdateReview(LoginRequiredMixin, UpdateView):
     model = Review
 
     fields = [

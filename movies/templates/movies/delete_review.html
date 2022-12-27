@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 
 {% block title %}
-ReviewVie - Edit Review
+ReviewVie - Delete Review
 {% endblock %}
 
 {% block content %}
@@ -11,26 +10,28 @@ ReviewVie - Edit Review
     {% if request.user == review.author or request.user.is_superuser %}
     <div class="row">
         <div class="col-12 text-center pt-3">
-            <h4 class="fw-semibold">Editing Review for: {{ movie_name }}</h4>
+            <h4 class="fw-semibold">You are about to delete your review for: {{ movie_name }}</h4>
+            <h5 class="fw-semibold">Are you sure? This cannot be undone!</h5>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
+            {{ review.rating }}
+            <br>
+            {{ review.review_content }}
             <form action="" method="post" class="text-center pt-3">
             {% csrf_token %}
-            {{ form | crispy | safe }}
-            <button type="submit" class="btn btn-success mt-3 mb-3">Submit</button>
+            <button type="submit" class="btn btn-danger mt-3">Delete</button>
             </form>
         </div>
     </div>
     {% else %}
     <div class="row">
         <div class="col-12 text-center pt-3">
-            <h1 class="fw-bold">Access Denied! You do not have permission to access this!</h1>
+            <h1 class="fw-bold">Access Denied! You do not have permission to acccess this!</h1>
         </div>
     </div>
     {% endif %}
 </div>
-
 
 {% endblock %}
