@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+404 - Page Not Found
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center pt-3">
+            <h1 class="fw-bold">404</h1>
+            <h2 class="fw-semibold">That page was not found.</h2>
+            <h3 class="fw-semibold mt-3"><a href="{% url 'home' %}">Click here</a> to go back
+                home.</h3>
+        </div>
+    </div>
+</div>
+{% endblock %}
