@@ -127,3 +127,9 @@ footer {
     max-height: 40vh;
     min-height: 300px;
 }
+
+/* Signup button */
+
+.offset-50 {
+    margin-left: calc(50% - 48px);
+}
