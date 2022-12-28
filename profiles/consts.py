@@ -1,20 +1,20 @@
 GENRE = (
-    ('action', 'Action'),
-    ('adventure', 'Adventure'),
-    ('comedy', 'Comedy'),
-    ('crime', 'Crime'),
-    ('drama', 'Drama'),
-    ('family', 'Family'),
-    ('fantasy', 'Fantasy'),
-    ('horror', 'Horror'),
-    ('music', 'Music'),
-    ('romance', 'Romance'),
-    ('sci-Fi', 'Sci-Fi'),
-    ('sport', 'Sport'),
-    ('superhero', 'Superhero'),
-    ('thriller', 'Thriller'),
-    ('war', 'War'),
-    ('western', 'Western')
+    ('Action', 'Action'),
+    ('Adventure', 'Adventure'),
+    ('Comedy', 'Comedy'),
+    ('Crime', 'Crime'),
+    ('Drama', 'Drama'),
+    ('Family', 'Family'),
+    ('Fantasy', 'Fantasy'),
+    ('Horror', 'Horror'),
+    ('Music', 'Music'),
+    ('Romance', 'Romance'),
+    ('Sci-Fi', 'Sci-Fi'),
+    ('Sport', 'Sport'),
+    ('Superhero', 'Superhero'),
+    ('Thriller', 'Thriller'),
+    ('War', 'War'),
+    ('Western', 'Western')
 )
 
 AGE_RATING = (
@@ -24,4 +24,13 @@ AGE_RATING = (
     ('12A', '12A'),
     ('15', '15'),
     ('18', '18')
+)
+
+MOVIE_RATING = (
+    (0, 0),
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5)
 )

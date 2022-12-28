@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from profiles.models import Profile
-from profiles.consts import GENRE, AGE_RATING
+from profiles.consts import GENRE, AGE_RATING, MOVIE_RATING
 from cloudinary.models import CloudinaryField
 
 
@@ -54,7 +54,7 @@ class Review(models.Model):
         Movie, on_delete=models.CASCADE, related_name="reviews"
         )
     review_content = models.TextField(max_length=1000)
-    rating = models.FloatField(default=0)
+    rating = models.IntegerField(choices=MOVIE_RATING, default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     edited_on = models.DateTimeField(auto_now=True)
 
