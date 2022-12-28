@@ -8,7 +8,9 @@ Profile - {{ request.user }}
 {% block content %}
 
 <div class="container-fluid">
+    <!-- Checks the current user is same as the profile owner or is a superuser -->
     {% if request.user == profile.user or request.user.is_superuser %}
+    <!-- Messages -->
     <div class="row justify-content-center text-center pt-3">
         <div class="col-md-4">
             {% for message in messages %}
@@ -20,6 +22,7 @@ Profile - {{ request.user }}
             {% endfor %}
         </div>
     </div>
+    <!-- Profile form -->
     <div class="row">
         <div class="col-md-10 offset-md-1 pt-2">
             <h1 class="fw-bold text-center">Profile of: {{ profile.user }}</h1>
@@ -37,6 +40,7 @@ Profile - {{ request.user }}
             </div>
         </div>
     </div>
+    <!-- Displays message if the current user is not the profile owner -->
     {% else %}
     <div class="row">
         <div class="col-12 text-center pt-3">

@@ -11,6 +11,10 @@ from .forms import ReviewForm, AddMovieForm, UpdateMovieForm
 
 
 class MovieDetail(DetailView):
+    """
+    Displays individual movie from the Movie model
+    and the related reviews to it.
+    """
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Movie.objects.filter(approved=True)
@@ -55,6 +59,12 @@ class MovieDetail(DetailView):
 
 
 class UpdateReview(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    """
+    Checks the user is logged in and allows them
+    to update their review by fetching their current review
+    and displaying it in a form. Redirects to home page
+    when the form is submitted and displays a success message.
+    """
     model = Review
 
     fields = [
@@ -78,6 +88,12 @@ class UpdateReview(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
 
 class DeleteReview(LoginRequiredMixin, DeleteView):
+    """
+    Checks the user is logged in and allows them to
+    delete their review. Displays their current review
+    and then deletes it when they submit the form. Redirects
+    to home page on success and displays a message.
+    """
     model = Review
     template_name = 'movies/delete_review.html'
     success_url = reverse_lazy('home')
@@ -92,11 +108,19 @@ class DeleteReview(LoginRequiredMixin, DeleteView):
 
 
 class AddMovie(LoginRequiredMixin, CreateView):
+    """
+    Allows the user to request to add a movie using
+    AddMovieForm. Redirects them to the home page when
+    successful and displays a message.
+    """
     model = Movie
     form_class = AddMovieForm
     template_name = 'movies/add_movie.html'
 
     def get_initial(self, *args, **kwargs):
+        """
+        Displays initial values in the Add movie form.
+        """
         initial = super().get_initial(**kwargs)
         initial['name'] = 'Enter Movie Name'
         initial['director'] = 'Enter Movie Director'
@@ -116,6 +140,12 @@ class AddMovie(LoginRequiredMixin, CreateView):
 
 
 class UpdateMovie(UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+    """
+    Checks the user is a superuser and then allows
+    them to update an existing movie using the UpdateMovieForm.
+    Redirects them to home page when successful and displays a
+    message.
+    """
     model = Movie
     form_class = UpdateMovieForm
     template_name = 'movies/update_movie.html'
@@ -127,6 +157,12 @@ class UpdateMovie(UserPassesTestMixin, SuccessMessageMixin, UpdateView):
 
 
 class DeleteMovie(UserPassesTestMixin, DeleteView):
+    """
+    Checks the user is a superuser and then allows
+    them to delete an existing movie from the Movie model.
+    Redirects them to home page when successful and displays a
+    message.
+    """
     model = Movie
     template_name = 'movies/delete_movie.html'
     success_url = reverse_lazy('home')

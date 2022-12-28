@@ -5,6 +5,10 @@ from movies.models import Movie, Review
 
 
 class MoviesHome(ListView):
+    """
+    Displays a List view of the Overall top rated,
+    top 4 rated, 4 newest movies and 4 newest reviews.
+    """
     model = Movie, Review
     template_name = 'home/home.html'
     context_object_name = 'movies'
@@ -23,6 +27,10 @@ class MoviesHome(ListView):
 
 
 class MovieList(ListView):
+    """
+    Displays a list of all approved movies and
+    paginates them by 16.
+    """
     model = Movie
     queryset = Movie.objects.filter(approved=True)
     template_name = 'home/all-movies.html'
@@ -31,6 +39,10 @@ class MovieList(ListView):
 
 
 class MovieSearch(ListView):
+    """
+    Displays a list of movies dependant on search
+    criteria.
+    """
     model = Movie
     template_name = 'home/all-movies.html'
     context_object_name = 'movies'

@@ -3,10 +3,16 @@ from django.forms import ModelForm, DateInput
 
 
 class DateInput(DateInput):
+    """
+    Displays an input as a date field.
+    """
     input_type = 'date'
 
 
 class ReviewForm(ModelForm):
+    """
+    Displays the review form.
+    """
     class Meta:
         model = Review
         fields = (
@@ -16,6 +22,10 @@ class ReviewForm(ModelForm):
 
 
 class AddMovieForm(ModelForm):
+    """
+    Displays the Movie form for adding
+    new movies.
+    """
     class Meta:
         model = Movie
         fields = (
@@ -30,6 +40,10 @@ class AddMovieForm(ModelForm):
 
 
 class UpdateMovieForm(ModelForm):
+    """
+    Displays the movie form for updating
+    existing movies.
+    """
     class Meta:
         model = Movie
         fields = (

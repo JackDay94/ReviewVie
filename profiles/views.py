@@ -9,6 +9,11 @@ from .forms import ProfileForm
 
 
 class ProfileView(LoginRequiredMixin, UpdateView):
+    """
+    Checks the user is logged in and displays the user profile
+    and allows them to update it with fields from the ProfileForm.
+    Displays a success message when they update successfully.
+    """
     model = Profile
     form_class = ProfileForm
     template_name = "profiles/profile.html"
