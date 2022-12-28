@@ -22,5 +22,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
     path('movies/', include('movies.urls')),
-    # path('profiles/', include('profiles.urls')),
+    path('profiles/', include('profiles.urls')),
 ]
