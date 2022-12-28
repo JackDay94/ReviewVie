@@ -9,6 +9,11 @@
     <meta name="description" content="Movie review and recommendation website">
     <meta name="keywords"
         content="Movies, Movie reviews, Top movies, What to watch, Audience reviews, Movie recommendations">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+    <!-- Styles -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Potta+One&display=swap" rel="stylesheet">
@@ -29,7 +34,7 @@
             <div class="container-fluid">
                 <a href="{% url 'home' %}" class="navbar-brand logo">
                     <i class="fa-solid fa-film p-2"></i><span class="text-warning">Review</span><span
-                        class="text-danger">Vie</span>
+                        class="text-white">Vie</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
