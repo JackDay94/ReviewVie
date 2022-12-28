@@ -24,3 +24,6 @@ urlpatterns = [
     path('movies/', include('movies.urls')),
     path('profiles/', include('profiles.urls')),
 ]
+
+handler404 = "ReviewVie.views.page_not_found_view"
+handler500 = "ReviewVie.views.internal_server_error_view"
