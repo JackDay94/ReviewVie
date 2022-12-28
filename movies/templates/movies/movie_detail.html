@@ -6,6 +6,18 @@ ReviewVie - {{ movie.name }}
 {% endblock %}
 
 {% block content %}
+<!-- Display messages (from CI django blog walkthrough)-->
+<div class="row justify-content-center text-center pt-3">
+    <div class="col-md-4">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissable bg-light fade show" id="msg" role="alert">
+            {{ message | safe }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 <div class="container-fluid">
     <!-- Edit and Delete buttons only viewable by superuser-->
     {% if request.user.is_superuser %}

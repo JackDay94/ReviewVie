@@ -103,6 +103,14 @@
     </footer>
     <!-- Font Awesome Script -->
     <script src="https://kit.fontawesome.com/9918a76ce2.js" crossorigin="anonymous"></script>
+    <!-- Message timeout script (from CI django blog walkthrough)-->
+    <script>
+        setTimeout(function() {
+            let messages = document.getElementById("msg");
+            let alert = new bootstrap.Alert(messages);
+            alert.close();
+        }, 3000);
+    </script>
 </body>
 
 </html>

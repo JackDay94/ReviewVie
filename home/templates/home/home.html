@@ -1,6 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Display messages (from CI django blog walkthrough)-->
+<div class="row justify-content-center text-center pt-3">
+    <div class="col-md-4">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissable bg-light fade show" id="msg" role="alert">
+            {{ message | safe }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 <div class="container-fluid">
     <!-- Top Rated Movie Overall -->
     <div class="row">
@@ -8,7 +20,8 @@
         <div class="col-12 text-center pt-3" id="top-movie">
             <a href="{% url 'movie_detail' movie.slug %}">
                 {% if "placeholder" in movie.image.url %}
-                <img src="https://via.placeholder.com/800.png?text=Movie+Awaiting+Image" alt="{{ movie.name }}" class="movie-img">
+                <img src="https://via.placeholder.com/800.png?text=Movie+Awaiting+Image" alt="{{ movie.name }}"
+                    class="movie-img">
                 {% else %}
                 <img src="{{ movie.image.url }}" alt="{{ movie.name }}" class="top-movie-img">
                 {% endif %}
@@ -37,7 +50,8 @@
             <div class="card text-center">
                 <a href="{% url 'movie_detail' movie.slug %}">
                     {% if "placeholder" in movie.image.url %}
-                    <img src="https://via.placeholder.com/800.png?text=Movie+Awaiting+Image" alt="{{ movie.name }}" class="movie-img">
+                    <img src="https://via.placeholder.com/800.png?text=Movie+Awaiting+Image" alt="{{ movie.name }}"
+                        class="movie-img">
                     {% else %}
                     <img src="{{ movie.image.url }}" alt="{{ movie.name }}" class="movie-img">
                     {% endif %}
@@ -57,7 +71,8 @@
             <div class="card text-center">
                 <a href="{% url 'movie_detail' movie.slug %}">
                     {% if "placeholder" in movie.image.url %}
-                    <img src="https://via.placeholder.com/800.png?text=Movie+Awaiting+Image" alt="{{ movie.name }}" class="movie-img">
+                    <img src="https://via.placeholder.com/800.png?text=Movie+Awaiting+Image" alt="{{ movie.name }}"
+                        class="movie-img">
                     {% else %}
                     <img src="{{ movie.image.url }}" alt="{{ movie.name }}" class="movie-img">
                     {% endif %}
@@ -89,4 +104,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}

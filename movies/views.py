@@ -2,8 +2,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import DetailView, UpdateView, DeleteView, CreateView
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.template.defaultfilters import slugify
 from django.urls import reverse_lazy
+from django.contrib import messages
 from .models import Movie, Review
 from .forms import ReviewForm, AddMovieForm, UpdateMovieForm
 
@@ -37,6 +39,7 @@ class MovieDetail(DetailView):
             review = review_form.save(commit=False)
             review.movie = movie
             review.save()
+            messages.success(request, 'Your Review has been added!')
         else:
             review_form = ReviewForm()
 
@@ -51,7 +54,7 @@ class MovieDetail(DetailView):
         )
 
 
-class UpdateReview(LoginRequiredMixin, UpdateView):
+class UpdateReview(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Review
 
     fields = [
@@ -61,6 +64,7 @@ class UpdateReview(LoginRequiredMixin, UpdateView):
 
     template_name = 'movies/update_review.html'
     success_url = reverse_lazy('home')
+    success_message = 'Updated Review successfully!'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -77,6 +81,14 @@ class DeleteReview(LoginRequiredMixin, DeleteView):
     model = Review
     template_name = 'movies/delete_review.html'
     success_url = reverse_lazy('home')
+    success_message = 'Review deleted succesfully!'
+
+    # Success message on delete taken from:
+    # https://stackoverflow.com/questions/48777015/djangos-successmessagemixin-not-working-with-deleteview
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message, 'danger')
+
+        return super(DeleteReview, self).delete(request, *args, **kwargs)
 
 
 class AddMovie(LoginRequiredMixin, CreateView):
@@ -98,15 +110,17 @@ class AddMovie(LoginRequiredMixin, CreateView):
                 new_movie = form.save(commit=False)
                 new_movie.slug = slugify(new_movie.name)
                 new_movie.save()
+                messages.success(request, 'Add Movie request was successful!')
         form = AddMovieForm()
         return redirect("home")
 
 
-class UpdateMovie(UserPassesTestMixin, UpdateView):
+class UpdateMovie(UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     model = Movie
     form_class = UpdateMovieForm
     template_name = 'movies/update_movie.html'
     success_url = reverse_lazy('home')
+    success_message = 'You have updated the Movie successfully!'
 
     def test_func(self):
         return self.request.user.is_superuser
@@ -116,6 +130,14 @@ class DeleteMovie(UserPassesTestMixin, DeleteView):
     model = Movie
     template_name = 'movies/delete_movie.html'
     success_url = reverse_lazy('home')
+    success_message = 'You have deleted the Movie successfully!'
 
     def test_func(self):
         return self.request.user.is_superuser
+
+    # Success message on delete taken from:
+    # https://stackoverflow.com/questions/48777015/djangos-successmessagemixin-not-working-with-deleteview
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message, 'danger')
+
+        return super(DeleteMovie, self).delete(request, *args, **kwargs)
