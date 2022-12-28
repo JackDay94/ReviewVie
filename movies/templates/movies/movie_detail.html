@@ -41,7 +41,7 @@ ReviewVie - {{ movie.name }}
         <div class="col-12 text-center pt-3">
             <h1 class="fw-bold">{{ movie.name }} </h1>
             {% with reviews.count as total_reviews %}
-            <h2 class="fw-semibold">Average Rating: {{ movie.average_stars }} <i
+            <h2 class="fw-semibold">Average Rating: {{ movie.average_stars | floatformat:2 }} <i
                     class="fa-solid fa-star star-rating"></i> ({{ total_reviews }})</h2>
             {% endwith %}
         </div>

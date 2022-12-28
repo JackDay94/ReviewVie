@@ -31,6 +31,18 @@ class Movie(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+    def update_review_fields(self):
+        """
+        Updates the average_star field depending on average user rating.
+        Taken from:
+        https://www.reddit.com/r/django/comments/kp6rz4/which_is_the_proper_way_of_calculating_average/
+        """
+        reviews = self.reviews.all()
+        self.average_stars = reviews.aggregate(models.Avg('rating')).get(
+            'rating__avg'
+            )
+        self.save(update_fields=['average_stars'])
+
 
 class Review(models.Model):
     """
@@ -51,3 +63,13 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review of {self.movie} by {self.author}"
+
+    def save(self, *args, **kwargs):
+        """
+        Overwrites the save method in Review and calls update_review_fields
+        method after saving the object.
+        Taken from:
+        https://www.reddit.com/r/django/comments/kp6rz4/which_is_the_proper_way_of_calculating_average/
+        """
+        super(Review, self).save(*args, **kwargs)
+        self.movie.update_review_fields()
