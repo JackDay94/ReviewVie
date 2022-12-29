@@ -19,10 +19,21 @@ ReviewVie is a Movie Review website that allows users to share their opinions on
 4. [Data Model](#data-model)
     - [Database Schema](#database-schema)
 5. [Features](#features)
-    - [Existing Features](#existing-features)
-    - [Future Features](#future-features)
-4. [Technologies](#technologies)
-5. [Testing](#testing)
+    - [Navbar](#navbar)
+    - [Footer](#footer)
+    - [Home](#home)
+    - [All Movies](#all-movies)
+    - [Movie Detail](#movie-detail)
+    - [Add Movie](#add-movie)
+    - [Edit Review](#edit-review)
+    - [Delete Review](#delete-review)
+    - [Edit Movie](#edit-movie)
+    - [Delete Movie](#delete-movie)
+    - [Register, login and logout](#register-login-and-logout)
+    - [Profile](#profile)
+6. [Future Features](#future-features)
+7. [Technologies](#technologies)
+8. [Testing](#testing)
     - [Validator Testing](#validator-testing)
     - [Manual Testing](#manual-testing)
     - [Solved Bugs](#solved-bugs)
@@ -165,7 +176,7 @@ The ER Diagram for this project shown above gives the relationship between the d
 ### Footer
 - The footer displays icons which link to social media sites.
 
-[!Footer](readme-images/features/footer.PNG)
+![Footer](readme-images/features/footer.PNG)
 
 ### Home
 - The home page displays a variety of information for users. The first thing they see is the top rated movie on the site.
@@ -215,3 +226,173 @@ The ER Diagram for this project shown above gives the relationship between the d
 - This page is only accessible by superusers and normal users are redirected.
 
 ![Edit movie](readme-images/features/edit-movie.PNG)
+
+![403 error](readme-images/features/403error.PNG)
+
+### Delete Movie
+- Displays a detail view of the movie selected for deletion and allows the superuser to delete it when they submit the form.
+- This page is only accessible by superusers and normal users are redirected.
+
+### Register, login and logout
+- The register page allows new users to register for an account with the site.
+
+![Register](readme-images/features/register.PNG)
+
+- The login page lets existing users login to their accounts.
+
+![Login](readme-images/features/sign-in.PNG)
+
+- The logout page lets signed in users logout of their account.
+
+![logout](readme-images/features/sign-out.PNG)
+
+### Profile
+- The profile page is displays the user profile and allows them to update their age, favourite genre and favourite director. All these fields are optional.
+
+![Profile](readme-images/features/profile.PNG)
+
+## Future Features
+Despite the main functionality of the site working, there is still much room for improvement. These features could be implemented to make the site better.
+
+- Like and dislike user reviews to provide more interaction between users.
+- Expanding user profiles to include profile images, the users reviews, favourite movies.
+- Movie reccomendations based on user preferences in their profile.
+- Option to sign in using social media accounts instead of user account.
+- Ability to approve movies through the site rather than through admin panel.
+- Page redirects to movie/review after updating/deleting.
+- Allow users to reset their username and password.
+- Prevent same user from reviewing the same movie more than once.
+
+## Technologies
+
+- Languages
+    - HTML5
+    - CSS3
+    - JavaScript
+    - Python 3.8.11
+
+- Databases
+    - [ElephantSQL](https://www.elephantsql.com/) - Used to store my database.
+
+- Frameworks and libraries
+    - [Bootstrap5](https://getbootstrap.com/) - Used for its mobile first approach to design.
+    - [Django (3.2.16)](https://www.djangoproject.com/) - Core framework
+    - [Django-allauth (0.51.0)](https://django-allauth.readthedocs.io/en/latest/installation.html) - Used for user authentication.
+    - [Django-crispy-forms (1.14.0)](https://django-crispy-forms.readthedocs.io/en/latest/) - Used to make forms have improved styling.
+
+- Storage
+    - [Cloudinary](https://cloudinary.com/) - Used as a media API to store images.
+
+- Other
+    - [Summernote](https://summernote.org/) - Used as a WYSIWYG editor for fields in admin.
+    - Gitpod - Used as the editing environment.
+    - Github - Used for version control of the project.
+    - [Google Fonts](https://fonts.google.com/) - Used for the font style of the site.
+    - [favicon.io](https://favicon.io/) - Used to create the favicon.
+    - [Font Awesome](https://fontawesome.com/) - Used for the star rating icon and logo icon.
+    - [Heroku](https://www.heroku.com/) - Used for deployment of the site.
+    - [Gunicorn (20.1.0)](https://gunicorn.org/)
+    - [Balsamiq wireframes](https://balsamiq.com/) - Used for project wireframes.
+    - [Lucidchart](https://www.lucidchart.com/pages/) - Used to create the database ER Diagram.
+    - Github projects - Used to create the user stories.
+
+## Testing
+
+### Validator Testing
+I used the following validators to test my site:
+<details>
+<summary>W3C HTML Validator</summary>
+Home page
+
+![Home test](readme-images/testing/w3-validator-home.PNG)
+
+All Movies
+
+![All movies test](readme-images/testing/w3-validator-allmovies.PNG)
+
+Movie Details
+
+![Movie detail test](readme-images/testing/w3-validator-moviedetail.PNG)
+
+Add Movie
+
+![Add movie test](readme-images/testing/w3-validator-addmovie.PNG)
+
+Login
+
+![Login test](readme-images/testing/w3-validator-login.PNG)
+
+Logout
+
+![Logout test](readme-images/testing/w3-validator-logout.PNG)
+
+Register
+
+![Register test](readme-images/testing/w3-validator-register.PNG)
+
+</details>
+
+<details>
+<summary>W3C CSS Validator</summary>
+
+![CSS test](readme-images/testing/w3-validator-css.PNG)
+
+</details>
+
+<details>
+<summary>CI Python linter</summary>
+Profiles app
+
+![Profiles admin test](readme-images/testing/profiles-admin-test.PNG)
+
+![Profiles consts test](readme-images/testing/profiles-consts-test.PNG)
+
+![Profiles forms test](readme-images/testing/profiles-forms-test.PNG)
+
+![Profiles models test](readme-images/testing/profiles-models-test.PNG)
+
+![Profiles signals test](readme-images/testing/profiles-signals-test.PNG)
+
+![Profiles urls test](readme-images/testing/profiles-urls-test.PNG)
+
+![Profiles views test](readme-images/testing/profiles-views-test.PNG)
+
+Movies app
+
+![Movies admin test](readme-images/testing/movies-admin-test.PNG)
+
+![Movies forms test](readme-images/testing/movies-forms-test.PNG)
+
+![Movies models test](readme-images/testing/movies-models-test.PNG)
+
+![Movies urls test](readme-images/testing/movies-urls-test.PNG)
+
+![Movies views test](readme-images/testing/movies-views-test.PNG)
+
+Home app
+
+![Home urls test](readme-images/testing/home-urls-test.PNG)
+
+![Home views test](readme-images/testing/home-views-test.PNG)
+
+ReviewVie project
+
+![Project urls test](readme-images/testing/project-urls-test.PNG)
+
+![Project views test](readme-images/testing/project-views-test.PNG)
+
+</details>
+
+### Lighthouse testing
+- Desktop
+
+![lighthouse desktop](readme-images/testing/lighthouse-desktop.PNG)
+
+- Mobile
+
+![lighthouse mobile](readme-images/testing/lighthouse-mobile.PNG)
+
+- I believe the low score for performance is due to the sizes of the images. Optimising them would reduce this further.
+
+### Manual Testing
+Due to experiencing issues with unitest not loading because of a database error, all tests for site features were carried out manually and can be found in [TESTS.md](TESTS.md)
