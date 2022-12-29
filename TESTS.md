@@ -87,3 +87,56 @@
 | Edit Movie Form       | Submit with name, release date, director and summary | Form submitted, data added to the Movies model with the information submitted, redirect to home page and display success message, movie updated with edited content | Pass   |
 | Edit Movie Form       | Submit with all fields filled                        | Form submitted, data added to the Movies model with the information submitted, redirect to home page and display success message, movie updated with edited content | Pass   |
 
+## Delete Movie page
+
+| Test            | Action                                               | Expected result                                                                                                                                                      | Result |
+|-----------------|------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| Movie details   | Displays correctly                                   | Movie name, image, genre, release date, director, age rating and summary displayed on page correctly                                                                 | Pass   |
+| Delete button   | Click button                                         | Movie is deleted from the Movie model, redirect to home page and display a success message                                                                           | Pass   |
+
+## Edit Review page
+
+| Test             | Action                                               | Expected result                                                                                                                                                     | Result |
+|------------------|------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| Edit Review form | Displays correctly                                   | Rating and review content fields are displayed                                                                                                                      | Pass   |
+| Edit Review form | Prepopulated                                         | Form is prepopulated with review content for the movie that the user has written                                                                                    | Pass   |
+| Edit Review Form | Submit with no content                               | Form not submitted and message displayed asking to fill in content                                                                                                  | Pass   |
+| Edit Review Form | Submit with all fields filled                        | Form submitted, review updated with new review data, redirect to home page and display success message                                                              | Pass   |
+
+## Delete Review page
+
+| Test             | Action                                               | Expected result                                                                                                                                                     | Result |
+|------------------|------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| Review details   | Displays correctly                                   | Full user review details for the corresponding movie are displayed                                                                                                  | Pass   |
+| Delete button    | Click button                                         | Review is deleted from the review model and the movie page, redirects to home page and displays a success message                                                   | Pass   |
+
+## Sign up page
+
+| Test                         | Action                                 | Expected result                                                                                                                                                             | Result |
+|------------------------------|----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| Register form                | Displays correctly                     | Registration form shows username, email, password and password(again)                                                                                                       | Pass   |
+| Register form invalid submit | Submit register form with invalid data | Form is not submitted and message displays telling user what went wrong and how to fix it                                                                                   | Pass   |
+| Register form valid submit   | Submit register form with valid data   | Form submitted, new user created and added to user model, profile created and added to profile model, user signed in and redirected to home page, success message displayed | Pass   |
+| Sign in link   | Click sign in link   | Go to sign in page | Pass   |
+
+## Logout page
+
+| Test                         | Action                                 | Expected result                                                                                                                                                             | Result |
+|------------------------------|----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| Logout button                | Click logout button                    | Logs the user out of their account, redirects to the home page and displays a success message                                                                               | Pass   |
+
+## Login page
+
+| Test                      | Action                              | Expected result                                                                           | Result |
+|---------------------------|-------------------------------------|-------------------------------------------------------------------------------------------|--------|
+| Login form                | Displays correctly                  | Displays the username and password fields for signing in                                  | Pass   |
+| Login form invalid submit | Submit login form with invalid data | Form is not submitted and message displays telling user what went wrong and how to fix it | Pass   |
+| Login form valid submit   | Submit login form with valid data   | User is logged into their account and redirected to home page with a success message      | Pass   |
+| Sign up link              | Click sign up link                  | Go to sign up page                                                                        | Pass   |
+
+## Profile page
+
+| Test                    | Action                            | Expected result                                                                                                         | Result |
+|-------------------------|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------|--------|
+| Profile form            | Displays correctly                | Displays the current user's username and Age, favourite genre and favourite director fields                             | Pass   |
+| Profile form submit     | Submit profile form               | Form is submitted and updates fields in the profile model for the user, reloads the page and displays a success message | Pass   |
