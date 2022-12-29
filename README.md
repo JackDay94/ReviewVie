@@ -36,11 +36,12 @@ ReviewVie is a Movie Review website that allows users to share their opinions on
 8. [Testing](#testing)
     - [Validator Testing](#validator-testing)
     - [Manual Testing](#manual-testing)
-    - [Solved Bugs](#solved-bugs)
+    - [Responsiveness Testing](#responsiveness-testing)
     - [Known Bugs](#known-bugs)
-6. [Deployment](#deployment)
-7. [Credits](#credits)
-    - [Content](#content)
+9. [Deployment](#deployment)
+    - [Local deployment](#local-deployment)
+    - [Deployment to heroku](#deployment-to-heroku)
+10. [Credits](#credits)
 
 ## Intended Audience
 ReviewVie is intended for people who love movies and love to share their opinions on them. The users coming to this site will be looking to either share their opinions on movies that they have watched or wanting to read other user reviews to help them decide what movie(s) they want to watch.
@@ -396,3 +397,47 @@ ReviewVie project
 
 ### Manual Testing
 Due to experiencing issues with unitest not loading because of a database error, all tests for site features were carried out manually and can be found in [TESTS.md](TESTS.md)
+
+### Responsiveness Testing
+Responsiveness was manually tested using different browsers (Firefox, Chrome, Edge) and different screen sizes. The smallest screen size this project was tested on was 320x480.
+
+### Known Bugs
+Some bugs have occured during the progress of this project and due to time constraints I was unable to fully iron them out. The ones that I know of are:
+- Users can leave multiple reviews on one movie.
+- Deleting a review doesn't update the average movie rating automatically until a new review is added or a current review is edited.
+- If two movies share the top rated movie spot, one of them will appear in the highest rated movies and the other will not appear at all.
+
+## Deployment
+The steps to deploy this project are as follows:
+
+### Local Deployment
+
+1. Log into Github and clone this repository using git clone command
+2. In the terminal of your CLI type "pip3 install -r requirements.txt" to install dependencies
+3. Create a .gitignore file in your root directory if you do not have one.
+4. Create and add an "env.py" file to your root directory and make sure it's in your .gitignore file
+5. Add 'DATABASE_URL', 'SECRET_KEY' and 'CLOUDINARY_URL' to your env.py file.
+6. These values are unique to you, set them depending on your database of choice and keep the SECRET_KEY secure!
+7. Create a Procfile if not already in your directory and add to it: "web: gunicorn ReviewVie.wsgi"
+8. While in development stage, make sure to set DEBUG = True in settings.py
+
+### Deployment to Heroku
+
+1. Sign in to or create a Heroku account
+2. Create a new heroku app, by selecting 'create new app'
+3. Choose a name and region for you app
+4. Go to the settings tab and click 'reveal config vars'
+5. Add DATABASE_URL, SECRET_KEY and CLOUDINARY_URL to the config vars using your values for these
+6. Add DISABLE_COLLECTSTATIC to the config vars and set its value to 1 (remove this before final deployment!)
+7. Add your heroku app url to the ALLOWED_HOSTS variable in settings.py
+8. Add, commit and push to heroku and wait for it to build your app
+9. When making your final deployment, remove the DISABLE_COLLECTSTATIC from heroku config vars and set DEBUG = FALSE in settings.py
+
+## Credits
+- [Code Institute course material](https://codeinstitute.net/) - I used the basic structure of 'I think therefore I blog' to help build my project
+- [Reddit](https://www.reddit.com/r/django/comments/kp6rz4/which_is_the_proper_way_of_calculating_average/) - Used to calculate the average star rating for my movies
+- [Stackoverflow](https://stackoverflow.com/questions/48777015/djangos-successmessagemixin-not-working-with-deleteview) - Used to get a success message on delete views
+- [CoreyMs](https://www.youtube.com/@coreyms) - Used to help add signals for creating user profiles
+- [django docs](https://www.djangoproject.com/) - Used for various help with django
+- [geeksforgeeks](https://www.geeksforgeeks.org/) - Help with views and models
+- [Bootstrap](https://getbootstrap.com/) - Documentation used to help with styles
