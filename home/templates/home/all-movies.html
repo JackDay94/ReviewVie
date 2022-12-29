@@ -21,7 +21,7 @@ ReviewVie - All Movies
         {% else %}
         {% for movie in movies %}
         <div class="col-md-6 col-6 col-lg-3">
-            <div class="card text-center">
+            <div class="card text-center pt-3">
                 <a href="{% url 'movie_detail' movie.slug %}">
                     {% if "placeholder" in movie.image.url %}
                     <img src="https://via.placeholder.com/800.png?text=Movie+Awaiting+Image" alt="{{ movie.name }}" class="movie-img">

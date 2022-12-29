@@ -27,3 +27,4 @@ urlpatterns = [
 
 handler404 = "ReviewVie.views.page_not_found_view"
 handler500 = "ReviewVie.views.internal_server_error_view"
+handler403 = "ReviewVie.views.permission_denied_view"
