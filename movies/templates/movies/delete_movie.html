@@ -20,7 +20,7 @@ ReviewVie - Delete Movie
     <div class="row">
         <div class="col-12 text-center pt-3 pb-3" id="delete-movie-img">
             {% if "placeholder" in movie.image.url %}
-            <img src="https://via.placeholder.com/800.png?text=Movie+Awaiting+Image" alt="{{ movie.name }}"
+            <img src="https://fakeimg.pl/800x800?text=Movie+Awaiting+Image&font_size=84" alt="{{ movie.name }}"
                 class="top-movie-img">
             {% else %}
             <img src="{{ movie.image.url }}" alt="{{ movie.name }}" class="top-movie-img">
